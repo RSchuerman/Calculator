@@ -17,12 +17,6 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void dcmBtn_Click(object sender, EventArgs e)
         {
 
@@ -119,6 +113,11 @@ namespace Calculator
         }
 
         private void pwrBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void frnBtn_Click(object sender, EventArgs e)
         {
 
         }

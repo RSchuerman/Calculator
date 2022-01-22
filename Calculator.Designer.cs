@@ -101,7 +101,7 @@ namespace Calculator
             this.frnBtn.TabIndex = 4;
             this.frnBtn.Text = "1/x";
             this.frnBtn.UseVisualStyleBackColor = true;
-            this.frnBtn.Click += new System.EventHandler(this.button4_Click);
+            this.frnBtn.Click += new System.EventHandler(this.frnBtn_Click);
             // 
             // ceBtn
             // 
