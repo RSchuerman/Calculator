@@ -32,7 +32,7 @@ namespace Calculator
         {
             resultBox.Text = (double.Parse(resultBox.Text) * -1).ToString();
         }
-
+        #region Number Buttons
         private void btn0_Click(object sender, EventArgs e)
         {
             if (resultBox.Text == "0" || isOperationPerformed || pressedEql)
@@ -122,7 +122,9 @@ namespace Calculator
             resultBox.Text = resultBox.Text + '9';
             pressedEql = false;
         }
+        #endregion
 
+        #region Operator Buttons
         private void plusBtn_Click(object sender, EventArgs e)
         {
             if (output != 0)
@@ -198,7 +200,68 @@ namespace Calculator
                 lastValueLbl.Text = output + " " + operation;
             }
         }
-      
+        private void sqrtBtn_Click(object sender, EventArgs e)
+        {
+            if (double.Parse(resultBox.Text) >= 0)
+            {
+                lastValueLbl.Text = "sqrt(" + resultBox.Text + ")";
+                resultBox.Text = (Math.Sqrt(double.Parse(resultBox.Text))).ToString();
+                output = double.Parse(resultBox.Text);
+            }
+            else
+            {
+                lastValueLbl.Text = "Imaginary Number";
+                resultBox.Text = "0";
+                output = 0;
+            }
+            isOperationPerformed = false;
+        }
+
+        private void sqrBtn_Click(object sender, EventArgs e)
+        {
+            lastValueLbl.Text = resultBox.Text + "^2";
+            resultBox.Text = (Math.Pow(double.Parse(resultBox.Text), 2)).ToString();
+            output = double.Parse(resultBox.Text);
+            isOperationPerformed = false;
+        }
+
+        private void pwrBtn_Click(object sender, EventArgs e)
+        {
+            if (output != 0)
+            {
+                eqlBtn.PerformClick();
+                operation = "^";
+                isOperationPerformed = true;
+                lastValueLbl.Text = output + " " + operation;
+            }
+            else
+            {
+                operation = "^";
+                output = double.Parse(resultBox.Text);
+                resultBox.Text = "0";
+                isOperationPerformed = true;
+                lastValueLbl.Text = output + " " + operation;
+            }
+        }
+
+        private void recBtn_Click(object sender, EventArgs e)
+        {
+            if (double.Parse(resultBox.Text) != 0)
+            {
+                lastValueLbl.Text = "1/" + resultBox.Text;
+                resultBox.Text = (1 / (double.Parse(resultBox.Text))).ToString();
+                output = double.Parse(resultBox.Text);
+                isOperationPerformed = false;
+            }
+            else
+            {
+                lastValueLbl.Text = "Cannot Divide by 0";
+                resultBox.Text = "0";
+                output = 0;
+            }
+        }
+        #endregion
+
         private void eqlBtn_Click(object sender, EventArgs e)
         {
             if (pressedEql)
@@ -285,67 +348,7 @@ namespace Calculator
             pressedEql = true;
         }
 
-        private void sqrtBtn_Click(object sender, EventArgs e)
-        {
-            if (double.Parse(resultBox.Text) >= 0)
-            {
-                lastValueLbl.Text = "sqrt(" + resultBox.Text + ")";
-                resultBox.Text = (Math.Sqrt(double.Parse(resultBox.Text))).ToString();
-                output = double.Parse(resultBox.Text);
-            }
-            else
-            {
-                lastValueLbl.Text = "Imaginary Number";
-                resultBox.Text = "0";
-                output = 0;
-            }
-            isOperationPerformed = false;
-        }
-
-        private void sqrBtn_Click(object sender, EventArgs e)
-        {
-            lastValueLbl.Text = resultBox.Text + "^2";
-            resultBox.Text = (Math.Pow(double.Parse(resultBox.Text), 2)).ToString();
-            output = double.Parse(resultBox.Text);
-            isOperationPerformed = false;
-        }
-
-        private void pwrBtn_Click(object sender, EventArgs e)
-        {
-            if (output != 0)
-            {
-                eqlBtn.PerformClick();
-                operation = "^";
-                isOperationPerformed = true;
-                lastValueLbl.Text = output + " " + operation;
-            }
-            else
-            {
-                operation = "^";
-                output = double.Parse(resultBox.Text);
-                resultBox.Text = "0";
-                isOperationPerformed = true;
-                lastValueLbl.Text = output + " " + operation;
-            }
-        }
-        
-        private void recBtn_Click(object sender, EventArgs e)
-        {
-            if (double.Parse(resultBox.Text) != 0)
-            {
-                lastValueLbl.Text = "1/" + resultBox.Text;
-                resultBox.Text = (1 / (double.Parse(resultBox.Text))).ToString();
-                output = double.Parse(resultBox.Text);
-                isOperationPerformed = false;
-            }
-            else
-            {
-                lastValueLbl.Text = "Cannot Divide by 0";
-                resultBox.Text = "0";
-                output = 0;
-            }
-        }
-
+        #region C CE D Buttons
         private void ceBtn_Click(object sender, EventArgs e)
         {
             resultBox.Text = "0";
@@ -372,6 +375,6 @@ namespace Calculator
             else
                 resultBox.Text = "0";
         }
-
+        #endregion
     }
 }
