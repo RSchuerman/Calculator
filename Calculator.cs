@@ -20,6 +20,87 @@ namespace Calculator
         public Calculator()
         {
             InitializeComponent();
+            this.KeyPress += new KeyPressEventHandler(Calculator_KeyPress);
+        }
+
+        void Calculator_KeyPress(object sernder, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)//(int)e.KeyChar)
+            {
+                case '0':
+                    btn0.PerformClick();
+                    break;
+
+                case '1':
+                    btn1.PerformClick();
+                    break;
+
+                case '2':
+                    btn2.PerformClick();
+                    break;
+
+                case '3':
+                    btn3.PerformClick();
+                    break;
+
+                case '4':
+                    btn4.PerformClick();
+                    break;
+
+                case '5':
+                    btn5.PerformClick();
+                    break;
+
+                case '6':
+                    btn6.PerformClick();
+                    break;
+
+                case '7':
+                    btn7.PerformClick();
+                    break;
+
+                case '8':
+                    btn8.PerformClick();
+                    break;
+
+                case '9':
+                    btn9.PerformClick();
+                    break;
+
+                case '+':
+                    plusBtn.PerformClick();
+                    break;
+
+                case '-':
+                    subBtn.PerformClick();
+                    break;
+
+                case '*':
+                    mulBtn.PerformClick();
+                    break;
+
+                case '/':
+                    divBtn.PerformClick();
+                    break;
+
+                case '=':
+                    eqlBtn.PerformClick();
+                    break;
+
+                case '^':
+                    pwrBtn.PerformClick();
+                    break;
+
+                case '.':
+                    dcmBtn.PerformClick();
+                    break;
+
+                default:
+                        //MessageBox.Show("Form.KeyPress: '" +
+                        //               e.KeyChar.ToString() + "' consumed.");
+                        //e.Handled = true;
+                        break;
+            }
         }
 
         private void dcmBtn_Click(object sender, EventArgs e)
