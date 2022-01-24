@@ -16,11 +16,138 @@ namespace Calculator
         string operation = "";
         bool isOperationPerformed = false;
         bool pressedEql = false;
+        bool historyIsClicked = false;
+        double[] historyVals = new double[6] { 0,0,0,0,0,0 };
 
         public Calculator()
         {
             InitializeComponent();
             this.KeyPress += new KeyPressEventHandler(Calculator_KeyPress);
+            Size = new Size(313, 440);
+        }
+
+        public void Set_History(double first, string second, string operation)
+        {
+            string output = "";
+            double outputVal = 0;
+            switch (operation)
+            {
+                case "+":
+                    outputVal = (first + double.Parse(second));
+                    output = first + " + " + second + " = " + outputVal;
+                    break;
+
+                case "-":
+                    outputVal = (first - double.Parse(second));
+                    output = first + " - " + second + " = " + outputVal;
+                    break;
+
+                case "*":
+                    outputVal = (first * double.Parse(second));
+                    output = first + " x " + second + " = " + outputVal;
+                    break;
+
+                case "/":
+                    outputVal = (first / double.Parse(second));
+                    output = first + " / " + second + " = " + outputVal;
+                    break;
+
+                case "1/":
+                    outputVal = (1 / double.Parse(second));
+                    output = "1/" + second + " = " + outputVal;
+                    break;
+
+                case "^":
+                    outputVal = (Math.Pow(first, double.Parse(second)));
+                    output = first + " ^ " + second + " = " + outputVal;
+                    break;
+
+                case "^2":
+                    outputVal = (Math.Pow(double.Parse(second), 2));
+                    output =  second + "^2" + " = " + outputVal;
+                    break;
+
+                case "sqrt":
+                    outputVal = (Math.Sqrt(double.Parse(second)));
+                    output = "sqrt( " + second + " ) = " + outputVal;
+                    break;
+            }
+
+            if(histValBtn1.Text == "")
+            {
+                histValBtn1.Text = output;
+                historyVals[0] = outputVal;
+            }
+            else if (histValBtn1.Text != "" && histValBtn2.Text == "")
+            {
+                histValBtn2.Text = histValBtn1.Text;
+                histValBtn1.Text = output;
+                historyVals[1] = historyVals[0];
+                historyVals[0] = outputVal;
+            }
+            else if (histValBtn1.Text != "" && histValBtn2.Text != "" && histValBtn3.Text == "")
+            {
+                histValBtn3.Text = histValBtn2.Text;
+                histValBtn2.Text = histValBtn1.Text;
+                histValBtn1.Text = output;
+                historyVals[2] = historyVals[1];
+                historyVals[1] = historyVals[0];
+                historyVals[0] = outputVal;
+            }
+            else if (histValBtn1.Text != "" && histValBtn2.Text != "" && histValBtn3.Text != "" && histValBtn4.Text == "")
+            {
+                histValBtn4.Text = histValBtn3.Text;
+                histValBtn3.Text = histValBtn2.Text;
+                histValBtn2.Text = histValBtn1.Text;
+                histValBtn1.Text = output;
+                historyVals[3] = historyVals[2];
+                historyVals[2] = historyVals[1];
+                historyVals[1] = historyVals[0];
+                historyVals[0] = outputVal;
+            }
+            else if (histValBtn1.Text != "" && histValBtn2.Text != "" && histValBtn3.Text != "" && histValBtn4.Text != "" && histValBtn5.Text == "")
+            {
+                histValBtn5.Text = histValBtn4.Text;
+                histValBtn4.Text = histValBtn3.Text;
+                histValBtn3.Text = histValBtn2.Text;
+                histValBtn2.Text = histValBtn1.Text;
+                histValBtn1.Text = output;
+                historyVals[4] = historyVals[3];
+                historyVals[3] = historyVals[2];
+                historyVals[2] = historyVals[1];
+                historyVals[1] = historyVals[0];
+                historyVals[0] = outputVal;
+            }
+            else if (histValBtn1.Text != "" && histValBtn2.Text != "" && histValBtn3.Text != "" && histValBtn4.Text != "" && histValBtn5.Text != "" && histValBtn6.Text == "")
+            {
+                histValBtn6.Text = histValBtn5.Text;
+                histValBtn5.Text = histValBtn4.Text;
+                histValBtn4.Text = histValBtn3.Text;
+                histValBtn3.Text = histValBtn2.Text;
+                histValBtn2.Text = histValBtn1.Text;
+                histValBtn1.Text = output;
+                historyVals[5] = historyVals[4];
+                historyVals[4] = historyVals[3];
+                historyVals[3] = historyVals[2];
+                historyVals[2] = historyVals[1];
+                historyVals[1] = historyVals[0];
+                historyVals[0] = outputVal;
+            }
+            else
+            {
+                histValBtn6.Text = histValBtn5.Text;
+                histValBtn5.Text = histValBtn4.Text;
+                histValBtn4.Text = histValBtn3.Text;
+                histValBtn3.Text = histValBtn2.Text;
+                histValBtn2.Text = histValBtn1.Text;
+                histValBtn1.Text = output;
+                historyVals[5] = historyVals[4];
+                historyVals[4] = historyVals[3];
+                historyVals[3] = historyVals[2];
+                historyVals[2] = historyVals[1];
+                historyVals[1] = historyVals[0];
+                historyVals[0] = outputVal;
+            }
         }
 
         void Calculator_KeyPress(object sernder, KeyPressEventArgs e)
@@ -222,7 +349,7 @@ namespace Calculator
                 resultBox.Text = "0";
                 isOperationPerformed = true;
                 lastValueLbl.Text = output + " " + operation;
-            }  
+            }
         }
 
         private void subBtn_Click(object sender, EventArgs e)
@@ -285,6 +412,7 @@ namespace Calculator
         {
             if (double.Parse(resultBox.Text) >= 0)
             {
+                Set_History(output, resultBox.Text, "sqrt");
                 lastValueLbl.Text = "sqrt(" + resultBox.Text + ")";
                 resultBox.Text = (Math.Sqrt(double.Parse(resultBox.Text))).ToString();
                 output = double.Parse(resultBox.Text);
@@ -300,6 +428,7 @@ namespace Calculator
 
         private void sqrBtn_Click(object sender, EventArgs e)
         {
+            Set_History(output, resultBox.Text, "^2");
             lastValueLbl.Text = resultBox.Text + "^2";
             resultBox.Text = (Math.Pow(double.Parse(resultBox.Text), 2)).ToString();
             output = double.Parse(resultBox.Text);
@@ -329,6 +458,7 @@ namespace Calculator
         {
             if (double.Parse(resultBox.Text) != 0)
             {
+                Set_History(output, resultBox.Text, "1/");
                 lastValueLbl.Text = "1/" + resultBox.Text;
                 resultBox.Text = (1 / (double.Parse(resultBox.Text))).ToString();
                 output = double.Parse(resultBox.Text);
@@ -354,7 +484,7 @@ namespace Calculator
             switch(operation)
             {
                 case "+":
-                    
+                    Set_History(output, resultBox.Text, "+");
                     resultBox.Text = (output + double.Parse(resultBox.Text)).ToString();
                     lastValueLbl.Text = output.ToString();
                     isOperationPerformed = false;
@@ -362,12 +492,14 @@ namespace Calculator
                     break;
 
                 case "-":
+                    Set_History(output, resultBox.Text, "-");
                     resultBox.Text = (output - double.Parse(resultBox.Text)).ToString();
                     lastValueLbl.Text = output.ToString();
                     isOperationPerformed = false;
                     break;
 
                 case "*":
+                    Set_History(output, resultBox.Text, "*");
                     resultBox.Text = (output * double.Parse(resultBox.Text)).ToString();
                     lastValueLbl.Text = output.ToString();
                     isOperationPerformed = false;
@@ -376,47 +508,23 @@ namespace Calculator
                 case "/":
                     if (resultBox.Text != "0")
                     {
+                        Set_History(output, resultBox.Text, "/");
                         resultBox.Text = (output / double.Parse(resultBox.Text)).ToString();
                         lastValueLbl.Text = output.ToString();
-                    } else
-                    {
-                        lastValueLbl.Text = "Cannot Divide by 0";
-                        resultBox.Text = "0";
-                        output = 0;
-                    }
-                    isOperationPerformed = false;
-                    break;
-
-                case "sqrt":
-                    lastValueLbl.Text = "sqrt(" + resultBox.Text + ")";
-                    resultBox.Text = (Math.Sqrt(double.Parse(resultBox.Text))).ToString();
-                    isOperationPerformed = false;
-                    break;
-
-                case "^2":
-                    lastValueLbl.Text = resultBox.Text + "^2";
-                    resultBox.Text = (Math.Pow(double.Parse(resultBox.Text), 2)).ToString();
-                    isOperationPerformed = false;
-                    break;
-
-                case "^":
-                    resultBox.Text = Math.Pow(output, double.Parse(resultBox.Text)).ToString();
-                    lastValueLbl.Text = output.ToString();
-                    isOperationPerformed = false;
-                    break;
-
-                case "1/":
-                    if (resultBox.Text != "0")
-                    {
-                        resultBox.Text = (output / double.Parse(resultBox.Text)).ToString();
-                        lastValueLbl.Text = output.ToString();
-                    }
+                    } 
                     else
                     {
                         lastValueLbl.Text = "Cannot Divide by 0";
                         resultBox.Text = "0";
                         output = 0;
                     }
+                    isOperationPerformed = false;
+                    break;
+
+                case "^":
+                    Set_History(output, resultBox.Text, "^");
+                    resultBox.Text = Math.Pow(output, double.Parse(resultBox.Text)).ToString();
+                    lastValueLbl.Text = output.ToString();
                     isOperationPerformed = false;
                     break;
 
@@ -457,5 +565,88 @@ namespace Calculator
                 resultBox.Text = "0";
         }
         #endregion
+
+        private void histBtn_Click(object sender, EventArgs e)
+        {
+            if (!historyIsClicked)
+            {
+                Size = new Size(486, 440);
+                historyIsClicked = true;
+            }
+            else
+            {
+                Size = new Size(313, 440);
+                historyIsClicked = false;
+            }
+             
+            
+        }
+
+        private void histValBtn1_Click(object sender, EventArgs e)
+        {
+            resultBox.Text = historyVals[0].ToString();
+            if (pressedEql)
+            {
+                output = 0;
+                pressedEql = false;
+                return;
+            }
+        }
+
+        private void histValBtn2_Click(object sender, EventArgs e)
+        {
+            resultBox.Text = historyVals[1].ToString();
+            if (pressedEql)
+            {
+                output = 0;
+                pressedEql = false;
+                return;
+            }
+        }
+
+        private void histValBtn3_Click(object sender, EventArgs e)
+        {
+            resultBox.Text = historyVals[2].ToString();
+            if (pressedEql)
+            {
+                output = 0;
+                pressedEql = false;
+                return;
+            }
+        }
+
+        private void histValBtn4_Click(object sender, EventArgs e)
+        {
+            resultBox.Text = historyVals[3].ToString();
+            if (pressedEql)
+            {
+                output = 0;
+                pressedEql = false;
+                return;
+            }
+        }
+
+        private void histValBtn5_Click(object sender, EventArgs e)
+        {
+            resultBox.Text = historyVals[4].ToString();
+            if (pressedEql)
+            {
+                output = 0;
+                pressedEql = false;
+                return;
+            }
+        }
+
+        private void histValBtn6_Click(object sender, EventArgs e)
+        {
+            resultBox.Text = historyVals[5].ToString();
+            if (pressedEql)
+            {
+                output = 0;
+                pressedEql = false;
+                return;
+            }
+        }
     }
+
 }

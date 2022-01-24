@@ -55,6 +55,14 @@ namespace Calculator
             this.dcmBtn = new System.Windows.Forms.Button();
             this.eqlBtn = new System.Windows.Forms.Button();
             this.lastValueLbl = new System.Windows.Forms.Label();
+            this.histBtn = new System.Windows.Forms.Button();
+            this.histValBtn1 = new System.Windows.Forms.Button();
+            this.histValBtn2 = new System.Windows.Forms.Button();
+            this.histValBtn3 = new System.Windows.Forms.Button();
+            this.histValBtn4 = new System.Windows.Forms.Button();
+            this.histValBtn5 = new System.Windows.Forms.Button();
+            this.histValBtn6 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sqrtBtn
@@ -367,11 +375,108 @@ namespace Calculator
             this.lastValueLbl.Size = new System.Drawing.Size(0, 24);
             this.lastValueLbl.TabIndex = 26;
             // 
+            // histBtn
+            // 
+            this.histBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.histBtn.Location = new System.Drawing.Point(213, 7);
+            this.histBtn.Name = "histBtn";
+            this.histBtn.Size = new System.Drawing.Size(75, 23);
+            this.histBtn.TabIndex = 27;
+            this.histBtn.Text = "History";
+            this.histBtn.UseVisualStyleBackColor = true;
+            this.histBtn.Click += new System.EventHandler(this.histBtn_Click);
+            // 
+            // histValBtn1
+            // 
+            this.histValBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.histValBtn1.Location = new System.Drawing.Point(307, 66);
+            this.histValBtn1.Name = "histValBtn1";
+            this.histValBtn1.Size = new System.Drawing.Size(152, 50);
+            this.histValBtn1.TabIndex = 28;
+            this.histValBtn1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.histValBtn1.UseVisualStyleBackColor = false;
+            this.histValBtn1.Click += new System.EventHandler(this.histValBtn1_Click);
+            // 
+            // histValBtn2
+            // 
+            this.histValBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.histValBtn2.Location = new System.Drawing.Point(307, 122);
+            this.histValBtn2.Name = "histValBtn2";
+            this.histValBtn2.Size = new System.Drawing.Size(152, 50);
+            this.histValBtn2.TabIndex = 29;
+            this.histValBtn2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.histValBtn2.UseVisualStyleBackColor = false;
+            this.histValBtn2.Click += new System.EventHandler(this.histValBtn2_Click);
+            // 
+            // histValBtn3
+            // 
+            this.histValBtn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.histValBtn3.Location = new System.Drawing.Point(307, 178);
+            this.histValBtn3.Name = "histValBtn3";
+            this.histValBtn3.Size = new System.Drawing.Size(152, 50);
+            this.histValBtn3.TabIndex = 30;
+            this.histValBtn3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.histValBtn3.UseVisualStyleBackColor = false;
+            this.histValBtn3.Click += new System.EventHandler(this.histValBtn3_Click);
+            // 
+            // histValBtn4
+            // 
+            this.histValBtn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.histValBtn4.Location = new System.Drawing.Point(307, 230);
+            this.histValBtn4.Name = "histValBtn4";
+            this.histValBtn4.Size = new System.Drawing.Size(152, 50);
+            this.histValBtn4.TabIndex = 31;
+            this.histValBtn4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.histValBtn4.UseVisualStyleBackColor = false;
+            this.histValBtn4.Click += new System.EventHandler(this.histValBtn4_Click);
+            // 
+            // histValBtn5
+            // 
+            this.histValBtn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.histValBtn5.Location = new System.Drawing.Point(307, 284);
+            this.histValBtn5.Name = "histValBtn5";
+            this.histValBtn5.Size = new System.Drawing.Size(152, 50);
+            this.histValBtn5.TabIndex = 32;
+            this.histValBtn5.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.histValBtn5.UseVisualStyleBackColor = false;
+            this.histValBtn5.Click += new System.EventHandler(this.histValBtn5_Click);
+            // 
+            // histValBtn6
+            // 
+            this.histValBtn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.histValBtn6.Location = new System.Drawing.Point(307, 338);
+            this.histValBtn6.Name = "histValBtn6";
+            this.histValBtn6.Size = new System.Drawing.Size(152, 50);
+            this.histValBtn6.TabIndex = 33;
+            this.histValBtn6.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.histValBtn6.UseVisualStyleBackColor = false;
+            this.histValBtn6.Click += new System.EventHandler(this.histValBtn6_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label1.Location = new System.Drawing.Point(325, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 42);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "History";
+            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 401);
+            this.ClientSize = new System.Drawing.Size(470, 401);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.histValBtn6);
+            this.Controls.Add(this.histValBtn5);
+            this.Controls.Add(this.histValBtn4);
+            this.Controls.Add(this.histValBtn3);
+            this.Controls.Add(this.histValBtn2);
+            this.Controls.Add(this.histValBtn1);
+            this.Controls.Add(this.histBtn);
             this.Controls.Add(this.lastValueLbl);
             this.Controls.Add(this.eqlBtn);
             this.Controls.Add(this.dcmBtn);
@@ -398,11 +503,11 @@ namespace Calculator
             this.Controls.Add(this.sqrBtn);
             this.Controls.Add(this.resultBox);
             this.Controls.Add(this.sqrtBtn);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Calculator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -437,6 +542,14 @@ namespace Calculator
         private System.Windows.Forms.Button dcmBtn;
         private System.Windows.Forms.Button eqlBtn;
         private System.Windows.Forms.Label lastValueLbl;
+        private System.Windows.Forms.Button histBtn;
+        private System.Windows.Forms.Button histValBtn1;
+        private System.Windows.Forms.Button histValBtn2;
+        private System.Windows.Forms.Button histValBtn3;
+        private System.Windows.Forms.Button histValBtn4;
+        private System.Windows.Forms.Button histValBtn5;
+        private System.Windows.Forms.Button histValBtn6;
+        private System.Windows.Forms.Label label1;
     }
 }
 
